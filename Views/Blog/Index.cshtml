@@ -1,0 +1,43 @@
+﻿@model BlogViewModel
+
+<div class="text-center ">
+    <h1 class="display-1">@Model.Blog.BlogName</h1>
+    <h2 class="display-4">@Model.Blog.Description</h2>
+
+    @if (Model.BlogOwner.Email == User.Identity.Name)
+    {
+        <h2>
+            <a asp-controller="Post" asp-action="Create" asp-route-id="@Model.Blog.BlogId">Create post</a>
+        </h2>
+    }
+
+    <div class="container row justify-content-around gap-3">
+        @foreach (var post in Model.Posts)
+        {
+        <div class="card" style="width: 18rem">
+                <div class="col-sm card-body">
+                <h2 class="card-title">
+                    <a asp-controller="Post" asp-action="Index" asp-route-id="@post.PostId">@post.PostTitle</a>
+                    
+                </h2>
+                <p class="card-text">
+                    @post.Content
+                </p>
+                @if (Model.BlogOwner.Email == User.Identity.Name)
+                {
+                    <div>
+                        <h5 class="link-secondary">
+                            <a asp-controller="Post" asp-action="Edit" asp-route-id="@post.PostId">Edit</a>
+                        </h5>
+                        <h5 class="link-secondary">
+                            <a asp-controller="Post" asp-action="Delete" asp-route-id="@post.PostId">Delete</a>
+                        </h5>
+                    </div>
+                }
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
+

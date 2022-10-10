@@ -1,0 +1,24 @@
+﻿@model Blog
+<form asp-action="Create" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-12">
+                <label asp-for="BlogName" class="form-label"></label>
+                <input asp-for="BlogName" class="form-control" />
+                <span asp-validation-for="BlogName" class="text-danger"></span>
+            </div>
+
+            <div class="col-12">
+                <label asp-for="Description" class="form-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mt-2">
+            <div class="col-md-offset-2 col-md-5">
+                <input type="submit" class="btn btn-secondary" value="Create blog" />
+            </div>
+        </div>
+    </div>
+</form>

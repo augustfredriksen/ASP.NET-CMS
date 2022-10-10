@@ -1,0 +1,28 @@
+﻿@model PostViewModel
+
+<div class="text-center">
+    <h1>@Model.Post.PostTitle</h1>
+    <br />
+    <h4>@Model.Post.Content</h4>
+    <br />
+    <br />
+    <div class="row-cols-1">
+        @foreach (var comment in Model.Comments)
+        {
+            <div class="col">
+                <h5>@comment</h5>
+                <p>@comment.CommentText</p>
+                <a class="btn btn-primary align-content-md-center" 
+                    asp-controller="Comment" asp-action="Edit" asp-route-id="@comment.CommentId">Edit
+                </a>
+                <a class="btn btn-primary align-content-md-center"
+                    asp-controller="Comment" asp-action="Delete" asp-route-id="@comment.CommentId">Delete
+                </a>
+            </div>
+        }
+        <br />
+        <h5 class="link-secondary">
+            <a asp-controller="Comment" asp-action="Create" asp-route-id="@Model.Post.PostId">Comment</a>
+        </h5>
+    </div>
+</div>

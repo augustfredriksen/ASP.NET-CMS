@@ -1,0 +1,22 @@
+﻿@model Comment
+
+@Html.Hidden("postId")
+<form asp-action="Create" method="post">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="col-12">
+                <label asp-for="CommentText" class="form-label"></label>
+                <input asp-for="CommentText" class="form-control" />
+                <span asp-validation-for="CommentText" class="text-danger"></span>
+            </div>
+
+            <input asp-for="PostId" value="@ViewBag.id" type="hidden" />
+        </div>
+
+        <div class="mt-2">
+            <div class="col-md-offset-2 col-md-5">
+                <input type="submit" class="btn btn-secondary" value="Post Comment" />
+            </div>
+        </div>
+    </div>
+</form>
